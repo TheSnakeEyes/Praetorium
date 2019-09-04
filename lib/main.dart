@@ -8,11 +8,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Praetorium',
       theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.amber,
-        accentColor: Colors.black,
-        fontFamily: 'Caslon Antique'
-      ),
+          brightness: Brightness.dark,
+          primaryColor: Colors.amber,
+          accentColor: Colors.black,
+          fontFamily: 'Caslon Antique'),
       home: MyHomePage(title: 'Preatorium'),
     );
   }
@@ -38,9 +37,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
             Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+              'Donec tempus, tortor eget posuere dictum,',
+              style: new TextStyle(fontStyle: FontStyle.italic),
             ),
+            Text('dui ex tincidunt erat, ac rhoncus velit purus et odio.',
+                style: new TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
       ),
