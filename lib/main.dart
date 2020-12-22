@@ -1,51 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:praetorium/bloc/dummy_bloc.dart';
+import 'package:praetorium/config/locator_config.dart';
+import 'package:praetorium/services/navigator_service.dart';
+import 'package:praetorium/ui/pages/my_home_page.dart';
 
-void main() => runApp(MyApp());
+import 'i18n/localization.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Praetorium',
-      theme: ThemeData(
-          brightness: Brightness.dark,
-          primaryColor: Colors.amber,
-          accentColor: Colors.black,
-          fontFamily: 'Caslon Antique'),
-      home: MyHomePage(title: 'Preatorium'),
-    );
-  }
+void main() => runApp(initialize());
+
+Widget initialize() {
+  initializeLocator();
+
+  return MainWidget();
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+/// Entry point
+/// TODO:
+/// - custom error handling / reporting
+/// - route builder for reducing potential boilerplate between pages if we want to have some common elements (eg. bottom navigation)
+class MainWidget extends StatelessWidget {
+  final NavigatorService _navigatorService = locator.get<NavigatorService>();
 
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
-            Text(
-              'Donec tempus, tortor eget posuere dictum,',
-              style: new TextStyle(fontStyle: FontStyle.italic),
-            ),
-            Text('dui ex tincidunt erat, ac rhoncus velit purus et odio.',
-                style: new TextStyle(fontWeight: FontWeight.bold))
-          ],
-        ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => DummyBloc())
+      ],
+      child: MaterialApp(
+        navigatorKey: _navigatorService.navigatorKey,
+        title: 'Praetorium',
+        localizationsDelegates: [
+          LocalizationDelegate(),
+        ],
+        supportedLocales: LocalizationDelegate.supportedLocales,
+        theme: ThemeData(
+            brightness: Brightness.dark,
+            primaryColor: Colors.amber,
+            accentColor: Colors.black,
+            fontFamily: 'Caslon Antique'),
+        home: MyHomePage(),
       ),
     );
   }
