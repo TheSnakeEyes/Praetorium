@@ -11,7 +11,7 @@ class Localization {
     return Localizations.of<Localization>(context, Localization);
   }
 
-  static Map<String, LocaleBundle> _localizedValues = {
+  static final Map<String, LocaleBundle> _localizedValues = {
     'en': LocaleBundleEn(),
   };
 

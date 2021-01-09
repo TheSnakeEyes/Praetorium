@@ -28,14 +28,14 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(_faker.lorem.sentence()),
             Text(
-              _faker.lorem.sentences(2).join("\n"),
-              style: new TextStyle(fontStyle: FontStyle.italic),
+              _faker.lorem.sentences(2).join('\n'),
+              style: TextStyle(fontStyle: FontStyle.italic),
             ),
-            Text(_faker.lorem.sentences(3).join("\n"), style: new TextStyle(fontWeight: FontWeight.bold)),
+            Text(_faker.lorem.sentences(3).join('\n'), style: TextStyle(fontWeight: FontWeight.bold)),
             // TODO: discuss whether we want to expose navigation or rather define it with page-specific BLoC that exposes more abstract (business specific) method
             TextButton(
               onPressed: () => _navigatorService.push((_) => MyOtherPage()),
-              child: Text("Press me!"),
+              child: Text('Press me!'),
             ),
           ],
         ),

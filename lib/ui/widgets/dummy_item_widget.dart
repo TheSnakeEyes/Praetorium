@@ -7,6 +7,6 @@ class DummyItemWidget extends StatelessWidget {
   DummyItemWidget({Key key, @required this.index, this.text}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Text("Item $index $text");
+  Widget build(BuildContext context) => Text('Item $index $text');
 
 }

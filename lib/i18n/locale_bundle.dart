@@ -5,6 +5,6 @@ abstract class LocaleBundle {
 
 class LocaleBundleEn extends LocaleBundle {
   @override
-  String get homePageTitle => "Praetorium";
+  String get homePageTitle => 'Praetorium';
 
 }
