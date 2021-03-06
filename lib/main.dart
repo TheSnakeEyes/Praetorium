@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:praetorium/bloc/dummy_bloc.dart';
 import 'package:praetorium/config/locator_config.dart';
 import 'package:praetorium/services/navigator_service.dart';
 import 'package:praetorium/ui/pages/my_home_page.dart';
 
+import 'bloc/global_bloc.dart';
 import 'i18n/localization.dart';
 
 void main() => runApp(initialize());
@@ -26,7 +26,7 @@ class MainWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => DummyBloc())
+        BlocProvider(create: (_) => GlobalBloc())
       ],
       child: MaterialApp(
         navigatorKey: _navigatorService.navigatorKey,

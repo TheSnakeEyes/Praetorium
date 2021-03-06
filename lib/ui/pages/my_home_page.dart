@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:praetorium/config/locator_config.dart';
 import 'package:praetorium/i18n/localization.dart';
 import 'package:praetorium/services/navigator_service.dart';
-import 'package:praetorium/ui/pages/my_other_page.dart';
+import 'package:praetorium/ui/pages/dummy_page.dart';
+import 'package:praetorium/ui/pages/global_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -34,8 +35,12 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(_faker.lorem.sentences(3).join('\n'), style: TextStyle(fontWeight: FontWeight.bold)),
             // TODO: discuss whether we want to expose navigation or rather define it with page-specific BLoC that exposes more abstract (business specific) method
             TextButton(
-              onPressed: () => _navigatorService.push((_) => MyOtherPage()),
-              child: Text('Press me!'),
+              onPressed: () => _navigatorService.push((_) => DummyPage()),
+              child: Text('Press me...'),
+            ),
+            TextButton(
+              onPressed: () => _navigatorService.push((_) => GlobalPage()),
+              child: Text('.. or press me'),
             ),
           ],
         ),
