@@ -5,6 +5,7 @@ import 'package:praetorium/i18n/localization.dart';
 import 'package:praetorium/services/navigator_service.dart';
 import 'package:praetorium/ui/pages/dummy_page.dart';
 import 'package:praetorium/ui/pages/global_page.dart';
+import 'package:praetorium/ui/pages/rooster_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -37,11 +38,15 @@ class _MyHomePageState extends State<MyHomePage> {
             // TODO: discuss whether we want to expose navigation or rather define it with page-specific BLoC that exposes more abstract (business specific) method
             TextButton(
               onPressed: () => _navigatorService.push((_) => DummyPage()),
-              child: Text('Press me...'),
+              child: Text('BLoC Widget Page'),
             ),
             TextButton(
               onPressed: () => _navigatorService.push((_) => GlobalPage()),
-              child: Text('.. or press me'),
+              child: Text('Global BLoC Page'),
+            ),
+            TextButton(
+              onPressed: () => _navigatorService.push((_) => RoosterPage()),
+              child: Text('Rooster page'),
             ),
           ],
         ),
