@@ -3,6 +3,7 @@ abstract class LocaleBundle {
   String get homePageTitle;
   String get delete;
   String get edit;
+  String get pointsShortcut;
 }
 
 class LocaleBundleEn extends LocaleBundle {
@@ -14,5 +15,8 @@ class LocaleBundleEn extends LocaleBundle {
 
   @override
   String get edit => 'Edit';
+
+  @override
+  String get pointsShortcut => 'pts';
 
 }

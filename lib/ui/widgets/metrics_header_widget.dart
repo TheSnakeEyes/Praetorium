@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:praetorium/ui/widgets/metric_widget.dart';
 
+/// TODO:
+/// - parametrize actions and icon
 class MetricsHeaderWidget extends StatelessWidget {
+  /// Minimal opacity that will be applied to [baseMetricColor] when building a row with metrics.
+  final double minMetricColorOpacity;
+  /// Minimal opacity that will be applied to [baseMetricColor] when building a row with metrics.
+  final double maxMetricColorOpacity;
+  /// Base color that will be used to build gradient-like background colors for metric tiles.
+  /// First and last will use [minMetricColorOpacity] and [maxMetricColorOpacity] respectively,
+  /// while for those between value of opacity will be calculated in linear way.
+  final Color baseMetricColor;
   final String title;
   final String subtitle;
   final List<MapEntry<String, String>> metrics;
 
-  const MetricsHeaderWidget({Key key, @required this.title, @required this.subtitle, this.metrics}) : super(key: key);
+  const MetricsHeaderWidget(
+      {Key key,
+      @required this.title,
+      @required this.subtitle,
+      this.metrics,
+      this.minMetricColorOpacity = 25.0,
+      this.maxMetricColorOpacity = 45.0,
+      this.baseMetricColor = Colors.black})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,16 +94,15 @@ class MetricsHeaderWidget extends StatelessWidget {
     List<MetricWidget> widgets = [];
 
     if (metrics != null && metrics.isNotEmpty) {
-      Color baseColor = Colors.black;
-      double minOpacity = 25.0, maxOpacity = 45.0;
-      double opacityStep =
-      metrics.length > 1 ? (maxOpacity - minOpacity) / (metrics.length - 1) : maxOpacity - minOpacity;
-      double currentOpacity = minOpacity;
+      double opacityStep = metrics.length > 1
+          ? (maxMetricColorOpacity - minMetricColorOpacity) / (metrics.length - 1)
+          : maxMetricColorOpacity - minMetricColorOpacity;
+      double currentOpacity = minMetricColorOpacity;
       for (MapEntry<String, String> me in metrics) {
         widgets.add(MetricWidget(
           type: me.key,
           value: me.value,
-          color: baseColor.withOpacity(currentOpacity / 100.0),
+          color: baseMetricColor.withOpacity(currentOpacity / 100.0),
         ));
         currentOpacity += opacityStep;
       }

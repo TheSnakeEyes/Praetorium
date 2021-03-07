@@ -27,7 +27,6 @@ final List<MapEntry<String, String>> metricList = [
 class RoosterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final TextTheme textTheme = Theme.of(context).textTheme;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: 32.0),
@@ -84,7 +83,7 @@ class RoosterPage extends StatelessWidget {
               style: textTheme.headline5,
             ),
             Text(
-              'pts',
+              localeBundle.pointsShortcut,
               style: textTheme.caption,
             ),
           ],
