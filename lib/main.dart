@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:praetorium/config/locator_config.dart';
 import 'package:praetorium/services/navigator_service.dart';
+import 'package:praetorium/theme.dart';
 import 'package:praetorium/ui/pages/my_home_page.dart';
 
 import 'bloc/global_bloc.dart';
@@ -35,11 +36,7 @@ class MainWidget extends StatelessWidget {
           LocalizationDelegate(),
         ],
         supportedLocales: LocalizationDelegate.supportedLocales,
-        theme: ThemeData(
-            brightness: Brightness.dark,
-            primaryColor: Colors.amber,
-            accentColor: Colors.black,
-            fontFamily: 'Caslon Antique'),
+        theme: buildTheme(),
         home: MyHomePage(),
       ),
     );

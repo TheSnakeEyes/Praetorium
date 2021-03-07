@@ -23,7 +23,8 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(Localization.of(context).bundle.homePageTitle),
       ),
-      body: Center(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
