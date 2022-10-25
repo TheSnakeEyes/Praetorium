@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:praetorium/i18n/locale_bundle.dart';
 import 'package:praetorium/i18n/localization.dart';
@@ -19,17 +16,19 @@ final List<Model> models = [
 ];
 
 final List<MapEntry<String, String>> metricList = [
-  MapEntry('Models', '15'),
-  MapEntry('Detachment', '1'),
-  MapEntry('Points', '150')
+  const MapEntry('Models', '15'),
+  const MapEntry('Detachment', '1'),
+  const MapEntry('Points', '150')
 ];
 
 class RoosterPage extends StatelessWidget {
+  const RoosterPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(top: 32.0),
+        padding: const EdgeInsets.only(top: 32.0),
         child: Column(
           children: [
             MetricsHeaderWidget(
@@ -41,7 +40,7 @@ class RoosterPage extends StatelessWidget {
               child: ListView.separated(
                 itemCount: models.length,
                 itemBuilder: buildListItem,
-                separatorBuilder: (_, __) => Padding(
+                separatorBuilder: (_, __) => const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Divider(),
                 ),
@@ -58,8 +57,23 @@ class RoosterPage extends StatelessWidget {
     final LocaleBundle localeBundle = Localization.of(context).bundle;
 
     return Slidable(
-      actionPane: SlidableDrawerActionPane(),
-      actionExtentRatio: 0.25,
+      startActionPane: ActionPane(
+        motion: const ScrollMotion(),
+        children: [
+          SlidableAction(
+            label: localeBundle.edit,
+            backgroundColor: Colors.green,
+            icon: Icons.edit,
+            onPressed: (_) => {},
+          ),
+          SlidableAction(
+            label: localeBundle.delete,
+            backgroundColor: Colors.redAccent,
+            icon: Icons.delete_outline,
+            onPressed: (_) => {},
+          )
+        ],
+      ),
       child: ListTile(
         title: Text(
           models[index].name,
@@ -70,7 +84,7 @@ class RoosterPage extends StatelessWidget {
           models[index].type,
           style: textTheme.caption,
         ),
-        leading: CircleAvatar(
+        leading: const CircleAvatar(
           radius: 16.0,
           backgroundColor: Colors.amber,
           child: SizedBox.shrink(),
@@ -89,20 +103,6 @@ class RoosterPage extends StatelessWidget {
           ],
         ),
       ),
-      actions: [
-        IconSlideAction(
-          caption: localeBundle.edit,
-          color: Colors.green,
-          icon: Icons.edit,
-          onTap: () => {},
-        ),
-        IconSlideAction(
-          caption: localeBundle.delete,
-          color: Colors.redAccent,
-          icon: Icons.delete_outline,
-          onTap: () => {},
-        )
-      ],
     );
   }
 }

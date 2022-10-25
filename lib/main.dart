@@ -23,6 +23,8 @@ Widget initialize() {
 class MainWidget extends StatelessWidget {
   final NavigatorService _navigatorService = locator.get<NavigatorService>();
 
+  MainWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -32,12 +34,12 @@ class MainWidget extends StatelessWidget {
       child: MaterialApp(
         navigatorKey: _navigatorService.navigatorKey,
         title: 'Praetorium',
-        localizationsDelegates: [
+        localizationsDelegates: const [
           LocalizationDelegate(),
         ],
         supportedLocales: LocalizationDelegate.supportedLocales,
         theme: buildTheme(),
-        home: MyHomePage(),
+        home: const MyHomePage(),
       ),
     );
   }

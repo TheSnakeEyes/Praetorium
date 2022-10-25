@@ -5,7 +5,7 @@ class MetricWidget extends StatelessWidget {
   final String value;
   final Color color;
 
-  const MetricWidget({@required this.type, @required this.value, this.color = Colors.transparent, Key key})
+  const MetricWidget({required this.type, required this.value, this.color = Colors.transparent, Key? key})
       : super(key: key);
 
   @override
@@ -13,7 +13,7 @@ class MetricWidget extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Expanded(
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 16.0),
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
         color: color,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

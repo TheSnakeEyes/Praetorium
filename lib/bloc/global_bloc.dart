@@ -7,11 +7,8 @@ part 'global_state.dart';
 class GlobalBloc extends Bloc<GlobalEvent, GlobalState> {
   final Faker _faker = Faker();
 
-  GlobalBloc() : super(GlobalState('???'));
-
-  @override
-  Stream<GlobalState> mapEventToState(GlobalEvent event) async* {
-    yield GlobalState(_faker.food.cuisine());
+  GlobalBloc() : super(GlobalState('???')) {
+    on<GlobalEvent>((event, emit) => emit(GlobalState(_faker.food.cuisine())));
   }
 
 }

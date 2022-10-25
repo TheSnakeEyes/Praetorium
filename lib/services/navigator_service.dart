@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 /// Central point for navigation logic, allowing for context-independent routing
 /// TODO:
@@ -10,6 +9,6 @@ class NavigatorService {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   void push(WidgetBuilder pageBuilder) {
-    navigatorKey.currentState.push(MaterialPageRoute(builder: pageBuilder));
+    navigatorKey.currentState?.push(MaterialPageRoute(builder: pageBuilder));
   }
 }

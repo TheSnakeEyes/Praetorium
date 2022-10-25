@@ -8,13 +8,13 @@ import 'package:praetorium/ui/pages/global_page.dart';
 import 'package:praetorium/ui/pages/rooster_page.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   final Faker _faker = Faker();
   final NavigatorService _navigatorService = locator.get<NavigatorService>();
 
@@ -25,28 +25,28 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(Localization.of(context).bundle.homePageTitle),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(_faker.lorem.sentence()),
             Text(
               _faker.lorem.sentences(2).join('\n'),
-              style: TextStyle(fontStyle: FontStyle.italic),
+              style: const TextStyle(fontStyle: FontStyle.italic),
             ),
-            Text(_faker.lorem.sentences(3).join('\n'), style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(_faker.lorem.sentences(3).join('\n'), style: const TextStyle(fontWeight: FontWeight.bold)),
             // TODO: discuss whether we want to expose navigation or rather define it with page-specific BLoC that exposes more abstract (business specific) method
             TextButton(
               onPressed: () => _navigatorService.push((_) => DummyPage()),
-              child: Text('BLoC Widget Page'),
+              child: const Text('BLoC Widget Page'),
             ),
             TextButton(
-              onPressed: () => _navigatorService.push((_) => GlobalPage()),
-              child: Text('Global BLoC Page'),
+              onPressed: () => _navigatorService.push((_) => const GlobalPage()),
+              child: const Text('Global BLoC Page'),
             ),
             TextButton(
-              onPressed: () => _navigatorService.push((_) => RoosterPage()),
-              child: Text('Rooster page'),
+              onPressed: () => _navigatorService.push((_) => const RoosterPage()),
+              child: const Text('Rooster page'),
             ),
           ],
         ),

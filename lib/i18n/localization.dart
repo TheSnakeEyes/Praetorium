@@ -8,7 +8,7 @@ class Localization {
   final Locale locale;
 
   static Localization of(BuildContext context) {
-    return Localizations.of<Localization>(context, Localization);
+    return Localizations.of<Localization>(context, Localization)!;
   }
 
   static final Map<String, LocaleBundle> _localizedValues = {
@@ -16,7 +16,7 @@ class Localization {
   };
 
   LocaleBundle get bundle {
-    return _localizedValues[locale.languageCode];
+    return _localizedValues[locale.languageCode]!;
   }
 }
 
