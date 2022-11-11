@@ -4,6 +4,7 @@ import 'package:praetorium/config/locator_config.dart';
 import 'package:praetorium/services/navigator_service.dart';
 import 'package:praetorium/theme.dart';
 import 'package:praetorium/ui/pages/my_home_page.dart';
+import 'package:praetorium/ui/pages/teams_list_page.dart';
 
 import 'bloc/global_bloc.dart';
 import 'i18n/localization.dart';
@@ -39,7 +40,7 @@ class MainWidget extends StatelessWidget {
         ],
         supportedLocales: LocalizationDelegate.supportedLocales,
         theme: buildTheme(),
-        home: const MyHomePage(),
+        home: TeamsListPage(), //const MyHomePage(),
       ),
     );
   }
